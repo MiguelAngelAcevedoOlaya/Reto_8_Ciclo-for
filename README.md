@@ -119,6 +119,31 @@ Para este punto importamos expoencial y factorial de la libreria math, estableci
 
 Luego le damos valor a las variables necesarias, y sacamos el valor real al elevar el número a cierto exponente, y establecimos un ciclo while que determine cuando el margen de error es inferior al 0.1%, ese sera el nuevo valor de n que utliziremos, corriendo nuevamente la función, dandonos el valor aproximado y el real.
 
+En esta primera es la función en la que nos buscamos que el margen de error sea menor a 0.1%, el usuaario tiene la libertad de elegir el número n, considerando que el margen de error
+
+```
+from math import exp, factorial
+
+def aprox_exp(numero: float, n: int)-> float:
+  suma: float = 0
+  for i in range(0, n+1):
+    n_ter = ((numero**i)/(factorial(i)))
+    suma += n_ter
+  return suma
+
+if __name__ == "__main__":
+  numero = float(input("Ingresa un número real "))
+  n: int = 10
+  aprx: float = aprox_exp(numero, n)
+  v_real : float = exp(numero)
+  vabs : float = (abs(v_real - aprx)/v_real * 100)
+  print("Aproximación :" +str(aprx))
+  print("El valor real es " +str(v_real))
+  print("Margen de error " +str(vabs)+ "%")
+
+```
+
+En esta si buscamos encontrar el valor en el que el margen de error es menor al 0.1%
 ```
 from math import exp, factorial
 
@@ -151,6 +176,31 @@ Para este punto importamos seno y factorial de la libreria math, establecimos la
 
 Luego le damos valor a las variables necesarias, y sacamos el valor real del numero en la función seno , y establecimos un ciclo while que determine cuando el margen de error es inferior al 0.1%, ese sera el nuevo valor de n que utliziremos, corriendo nuevamente la función, dandonos el valor aproximado y el real.
 
+En esta primera es la función en la que nos buscamos que el margen de error sea menor a 0.1%, el usuaario tiene la libertad de elegir el número n, considerando que el margen de error
+
+```
+from math import sin, factorial
+
+def aprox_sin(numero: float, n: int)-> float:
+  suma: float = 0
+  for i in range(0, n+1):
+    n_ter = (((-1)**i)*((numero**(2*i+1))/(factorial(2*i+1))))
+    suma += n_ter
+  return suma
+
+if __name__ == "__main__":
+  numero = float(input("Ingresa un número real "))
+  n: int = 10
+  aprx: float = aprox_sin(numero, n)
+  v_real : float = sin(numero)
+  vabs : float = ((abs(v_real - aprx))/abs(v_real) * 100)
+  print("Aproximación :" +str(aprx))
+  print("El valor real es " +str(v_real))
+  print("Margen de error " +str(vabs)+ "%")
+```
+
+En esta si buscamos encontrar el valor en el que el margen de error es menor al 0.1%
+
 ```
 from math import sin, factorial
 
@@ -178,6 +228,32 @@ print("El valor real es " +str(v_real))
 ### PUNTO 10
 
 #### Diseñar una función que permita calcular una aproximación de la función arcotangente alrededor de 0 para cualquier valor x en el rango [-1, 1], utilizando los primeros n términos de la serie de Maclaurin. Nota: use math para traer la función arctan y mostrar la diferencia entre el valor real y la aproximación.
+
+En esta primera es la función en la que nos buscamos que el margen de error sea menor a 0.1%, el usuaario tiene la libertad de elegir el número n, considerando que el margen de error
+
+```
+from math import factorial
+from numpy import arctan
+
+def aprox_arctg(numero: float, n: int)-> float:
+  suma: float = 0
+  for i in range(0, n+1):
+    n_ter = (((-1)**i)*((numero**(2*i+1))/(2*i+1)))
+    suma += n_ter
+  return suma
+
+if __name__ == "__main__":
+  numero = float(input("Ingresa un número real entre -1 y 1: "))
+  n: int = 10
+  aprx: float = aprox_arctg(numero, n)
+  v_real : float = arctan(numero)
+  vabs : float = ((abs(v_real - aprx))/abs(v_real) * 100)
+  print("Aproximación :" +str(aprx))
+  print("El valor real es " +str(v_real))
+  print("Margen de error " +str(vabs)+ "%")
+```
+
+En esta si buscamos encontrar el valor en el que el margen de error es menor al 0.1%
 
 ```
 from math import factorial
